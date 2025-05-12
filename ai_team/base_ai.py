@@ -9,7 +9,7 @@
 # (at your option) any later version.
 
 
-class AiBase:
+class BaseAi:
     def __init__(self, name, role, system_prompt, memory_path, model):
         self.name = name
         self.role = role

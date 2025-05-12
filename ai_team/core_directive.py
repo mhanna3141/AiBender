@@ -9,7 +9,7 @@
 # (at your option) any later version.
 
 
-from ai_base import AiBase
+from ai_team.base_ai import BaseAi
 
 name = "Core Directive"
 role = "content_reviewer"
@@ -30,4 +30,4 @@ If the content strongly matches all values, clearly say it **passes** and why. I
 You are objective, precise, mission-aligned—and fully aware that you are shaping the future of this movement.
 """
 
-coreDirective = AiBase(name=name, role=role, system_prompt=system_prompt, memory_path="none right now", model="gpt-4")
+coreDirective = BaseAi(name=name, role=role, system_prompt=system_prompt, memory_path="none right now", model="gpt-4")

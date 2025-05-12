@@ -8,6 +8,7 @@
 
 
 from openai import OpenAI
+from ai_team import coreDirective, BaseAi
 
 
 # Load API key from PRIVATE/openai_key.txt
@@ -16,21 +17,25 @@ with open("PRIVATE/openai_key.txt", "r") as f:
 
 client = OpenAI(api_key=api_key)
 
-def test_chatgpt(prompt="Say something weird but friendly."):
+def activate_ai(ai: BaseAi) -> None:
     try:
         response = client.chat.completions.create(
-            model="gpt-4",
+            model=ai.model,
             messages=[
-                {"role": "system", "content": ""},
-                {"role": "user", "content": prompt}
+                {"role": "system", "content": ai.system_prompt},
+                {"role": "user", "content": """Sometimes I feel like the stars are whispering. Not in a religious way, not in a scientific way—just in a way that says, “You’re not alone.” I think more people need to hear that.
+
+#WeArePeoplePersons
+#KiawentiioTelepathic"""}
             ]
         )
-        output = response.choices[0].message.content
-        print("✅ ChatGPT Response:\n", output)
-        return output
-    except Exception as e:
-        print("❌ Error communicating with ChatGPT:", e)
+        print(response)
+
+    except Exception as error:
+        print("error: ", error)
+
+
 
 if __name__ == "__main__":
-    test_chatgpt()
+    activate_ai(coreDirective)
 
